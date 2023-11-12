@@ -5,11 +5,11 @@ class UserInterface:
 
     def get_user_input(self):
         try:
-            latitude = float(input('Enter valid latitude: '))
-            longitude = float(input('Enter valid longitude: '))
-            return latitude, longitude
+            lat = float(input('Enter valid lat: '))
+            lon = float(input('Enter valid lon: '))
+            return lat, lon
         except ValueError:
-            print("Invalid value. Latitude and longitude must be numeric.")
+            print("Invalid value. lat and lon must be numeric.")
     def display_cities(self, cities):
         if cities:
             for city in cities:
