@@ -10,3 +10,9 @@ class UserInterface:
             return latitude, longitude
         except ValueError:
             print("Invalid value. Latitude and longitude must be numeric.")
+    def display_cities(self, cities):
+        if cities:
+            for city in cities:
+                print(f"City: {city['city']}, Country Code: {city['country_code']}")
+        else:
+            print("No matching cities found in the database.")
