@@ -5,12 +5,13 @@ import os
 class Client:
     def __init__(self, api_key):
         self._api_key = api_key
-        self.base_url = "http://api.openweathermap.org/geo/1.0/direct"
+        self.base_url = "http://api.openweathermap.org/geo/1.0/reverse"
 
     def get(self, lat, lon):
         try:
             params = {
-                'q': f"{lat}, {lon}",
+                'lat': lat,
+                'lon': lon,
                 'limit': 10,
                 'appid': self._api_key
             }
