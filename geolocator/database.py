@@ -12,9 +12,7 @@ class Database:
             self._create_table()
         except Error as error:
             print(error)
-        finally:
-            if self.connection:
-                self.connection.close()
+        
 
     def write(self, latitude, longitude, city, country):
         try:
@@ -37,3 +35,16 @@ class Database:
 ''')
         except Error as error:
             print(error)
+    
+    def search_cities(self, latitude, longitude):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute("SELECT * FROM geolocation WHERE latitude=? AND longitude=?", (latitude, longitude))
+            rows = cursor.fetchall()
+            return rows  
+        except Error as error:
+            print(error)
+    
+    def close_connection(self):
+        if self.connection:
+            self.connection.close()
