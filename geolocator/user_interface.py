@@ -5,8 +5,8 @@ class UserInterface:
 
     def get_user_input(self):
         try:
-            latitude = float(input('Enter valid latitude'))
-            longitude = float(input('Enter valid longitude'))
+            latitude = float(input('Enter valid latitude: '))
+            longitude = float(input('Enter valid longitude: '))
             return latitude, longitude
         except ValueError:
             print("Invalid value. Latitude and longitude must be numeric.")

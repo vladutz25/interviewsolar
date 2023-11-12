@@ -1,4 +1,5 @@
 import requests
+import os
 
 
 class Client:
@@ -9,17 +10,17 @@ class Client:
     def get(self, latitude, longitude):
         try:
             params = {
-                'q': f"{city_name}, {country_code}",
+                'q': f"{latitude}, {longitude}",
                 'limit': 10,
                 'appid': self._api_key
             }
             response = requests.get(self.base_url, params=params)
-            if response.status_code = 200:
+            if response.status_code == 200:
                 data = response.json()
                 return data
             else:
                 print("API request failed")
                 return None
-        except requests.Request Exception as e:
+        except Exception as e:
             print("Request failed: ", e)
             return None
