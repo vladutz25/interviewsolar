@@ -16,6 +16,8 @@ class Database:
 
     def write(self, lat, lon, city, country):
         try:
+            # if lat is None or lon is None:
+            #     raise ValueError("Invalid latitude or longitude")
             cursor = self.conn.cursor()
             cursor.execute("INSERT INTO cities (latitude, longitude, city, country_code) VALUES (?, ?, ?, ?)",
                            (lat, lon, city, country))
@@ -38,7 +40,7 @@ class Database:
     
     def search_cities(self, lat, lon):
        cursor = self.conn.cursor()
-       query = "SELECT name, country_code FROM cities WHERE latitude BETWEEN ? AND ? AND longitude BETWEEN ? AND ?"
+       query = "SELECT city, country_code FROM cities WHERE latitude BETWEEN ? AND ? AND longitude BETWEEN ? AND ?"
        parameters = (lat - 0.03, lat + 0.03, lon - 0.03, lon + 0.03)
        cursor.execute(query, parameters)
        result = cursor.fetchall()
