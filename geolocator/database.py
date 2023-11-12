@@ -16,8 +16,10 @@ class Database:
 
     def write(self, lat, lon, city, country):
         try:
-            # if lat is None or lon is None:
-            #     raise ValueError("Invalid latitude or longitude")
+            #if commented, it will show one city and the Null value
+
+            # if lat is None or lon is None or city is None or country is None:
+            #      raise ValueError("Invalid latitude or longitude")
             cursor = self.conn.cursor()
             cursor.execute("INSERT INTO cities (latitude, longitude, city, country_code) VALUES (?, ?, ?, ?)",
                            (lat, lon, city, country))
@@ -29,8 +31,8 @@ class Database:
         try:
             cursor = self.conn.cursor()
             cursor.execute('''CREATE TABLE IF NOT EXISTS cities (
-    lat REAL NOT NULL,
-    lon REAL NOT NULL,
+    latitude REAL NOT NULL,
+    longitude REAL NOT NULL,
     city TEXT NOT NULL,
     country_code TEXT NOT NULL
 )

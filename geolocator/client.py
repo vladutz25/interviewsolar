@@ -18,7 +18,7 @@ class Client:
             response = requests.get(self.base_url, params=params)
             if response.status_code == 200:
                 data = response.json()
-                return [{"name": row["name"], "country_code": row["country"]} for row in data]
+                return [{"name": row["name"], "country": row["country"]} for row in data]
             else:
                 print("API request failed")
                 return None
